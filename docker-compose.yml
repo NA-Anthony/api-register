@@ -1,0 +1,34 @@
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: myapi
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 8000:8000
+    networks:
+      - laravel
+    depends_on:
+      - db
+  db:
+    image: postgres
+    container_name: postgres
+    volumes: 
+      - db_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 1234:5432 
+    environment:
+      POSTGRES_DB: apiuser
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - laravel
+volumes:
+  db_data:
+
+networks:
+  laravel:
+    driver: bridge
