@@ -12,9 +12,9 @@ class SendTestEmail extends Command
 
     public function handle()
     {
-        $toEmail = 'nakanyanthony@gmail.com'; 
+        $toEmail = 'ravelonarivoantonio@gmail.com'; 
         $subject = 'Email de validation';
-        $messageBody = '<h1>Email de validation</h1><p>Votre inscription a été approuvée.</p>';
+        $messageBody = '<h1>Email de validation</h1><p>LELENA.</p>';
 
         // Envoi de l'email
         try {
